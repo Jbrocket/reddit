@@ -149,6 +149,7 @@ class Post(Base):
         self.data = data
         self.base_comments = []
         self.title = None
+        self.included = set()
 
     def scrape(self): # 3 LOC
         URL = self.url
@@ -193,9 +194,26 @@ class Post(Base):
     def get_comment_tree(self, comments, num):
         base_comments = []
         global num_comments
+        fp = open("data.text", "a+")
+        swear_words = ["fuck", "shit", "bitch", "dick", "cunt", "wanker", "pussy", "damn", "ass", "asshole", "bastard", "dickhead", "goddamn", "mufucka"]
         
         def helper(comment: Comment, depth, data):
             global num_comments
+            depth = 20
+            string = comment.body
+            ## get rid of periods
+            sentences = re.split('[.!?;:&]', string)
+            sentences = [sentence.strip() for sentence in sentences if sentence.strip()]
+            for sentence in sentences:
+                sentence_lower = sentence.lower()
+                for swear_word in swear_words:
+                    if re.search(rf'\b{re.escape(swear_word)}\b', sentence_lower) and sentence not in self.included:
+                        sentence = re.sub(r'\n+', ', ', sentence)
+                        self.included.add(sentence)
+                        print(f"{sentence}.")
+                        if len(sentence) > 10:
+                            fp.write(f"{sentence}.\n")
+            
             if depth == num or num_comments >= self.settings.comment_num:
                 return True
             
@@ -219,6 +237,8 @@ class Post(Base):
             new_comment = Comment(comment['data']['author'], comment['data']['created_utc'], comment['data']['body'], comment['data'][self.settings.comment_attr])
             base_comments.append(new_comment)
             helper(new_comment, 0, comment)
+        
+        fp.close()
         return base_comments
 
     def display_comment_tree(self, reply_list: dict, depth: int): # 12 LOC

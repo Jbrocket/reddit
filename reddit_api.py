@@ -3,12 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from db_manager import db_session
 from reddit_classes import Settings, Subreddit, Post, User
 from flask_bootstrap import Bootstrap
-from flaskext.markdown import Markdown
+# from flaskext.markdown import Markdown
 import re
-
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
-markdown = Markdown(app)
+# markdown = Markdown(app)
 db_session.expire_on_commit = False
 
 user = None

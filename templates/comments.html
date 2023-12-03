@@ -6,14 +6,14 @@
     .comment {background-color: #f7fefa;}
 </style>
 
-<h2 class="text-center mb-4 pb-2">{{ title | markdown }}</h2>
+<h2 class="text-center mb-4 pb-2">{{ title }}</h2>
 
 <div class="container">
     {%- for item in parent_comments recursive %}
     <div class="comment">
     <h6 class="user">{{item.user}}</h6>
     <p class="metadata">{{item.time}} • {{item.attr}}</p>
-    <p>{{ item.body | markdown }}</p>
+    <p>{{ item.body }}</p>
     <div class="buttons">
         <button type="button" class="btn btn-dark">Reply</button>
         <button type="button" class="btn btn-dark">Flag</button>
