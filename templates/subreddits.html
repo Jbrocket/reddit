@@ -1,0 +1,22 @@
+{% include 'navbar.html' %}
+
+{% block content %}
+<div class="container">
+    <div class='panel-group'>
+        {% for sub, link in subreddit_list.items() %}
+        <!-- Add each subreddit to a panel container and add a link to view the subreddits posts -->
+        <!-- 6 LoC -->
+            <div class='panel'>
+                <div class="panel-body">
+                    {{sub}} 
+                </div>
+                <div class="panel-footer">
+                    <button onclick="window.location.href='{{link}}'" class="btn btn-primary btn-sm" >
+                        Posts
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

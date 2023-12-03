@@ -1,0 +1,22 @@
+{% include 'navbar.html' %}
+
+{% block content %}
+<div class="container">
+    {% for post, value in post_list.items() %}
+    <!-- Add each post to a panel container and add a link to view the posts comments -->
+    <!-- Use a flask filter to correctly render the markdown -->
+    <!-- 9 LoC -->
+        <div class='panel'>
+            <div class="panel-footer">
+                <p class="h2">{{post}}</p><br>
+                {{value[1] | markdown}} 
+            </div>
+            <div class="panel-body">
+                <button onclick="window.location.href='{{value[0]}}'" class="btn btn-primary btn-sm" >
+                    Comments
+                </button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

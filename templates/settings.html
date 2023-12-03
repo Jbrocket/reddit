@@ -1,0 +1,105 @@
+{% include 'navbar.html' %}
+
+{% block content %}
+
+<style>
+    /* add some style to your settings page using CSS */
+    /* 30 LoC */
+    .custom-height {height: 100px;}
+    .form-group-custom {height: 70px;}
+    body {background-color: #f7fafa;}
+</style>
+
+<div class="container">
+    <!-- Add a form entry area for each attribute in your settings object -->
+    <!-- When the page is accessed show the current settings in the entry areas -->
+    <!-- Have a single submission button to send the new settings to the backend -->
+    <!-- You can assume that the entries for the settings will be nicely entered for this assignment -->
+    <!-- 55 LoC -->
+    <form method="post">
+        <div class="row custom-height">
+            <p class="h1">Settings</p>
+        </div>
+        <dic class="row">
+            <div class="col-md-4">
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="subRegex">Sub Regex</label><br>
+                        <input class="form-control" type="text" name="sub_regex" id="subRegex" value="{{setr.sub_regex}}"><br>
+                    </div>
+                </div>
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="subNum">Sub Num</label><br>
+                        <input class="form-control" type="text" name="sub_num" id="subNum" value="{{setr.sub_num}}"><br>
+                    </div>
+                </div>
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="subReverse">Sub Reverse</label><br>
+                        <input class="form-control" type="text" name="sub_reverse" id="subReverse" value="{{setr.sub_reverse}}"><br>
+                    </div>
+                </div>
+                <div class="row form-group-custom">
+                    <div class="col-md-6 form-group center">
+                        <br>
+                        <button type="submit" class="btn btn-success btn-large" value="submit">Submit Changes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="titleRegex">Title Regex</label><br>
+                        <input class="form-control" type="text" name="title_regex" id="titleRegex" value="{{setr.title_regex}}"><br>
+                    </div>
+                </div>
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="titleNum">Title Num</label><br>
+                        <input class="form-control" type="text" name="title_num" id="titleNum" value="{{setr.title_num}}"><br>
+                    </div>
+                </div>
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="titleReverse">Title Reverse</label><br>
+                        <input class="form-control" type="text" name="title_reverse" id="titleReverse" value="{{setr.title_reverse}}"><br>
+                    </div>
+                </div>
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="titleAttr">Title Attribute</label><br>
+                        <input class="form-control" type="text" name="title_Attr" id="titleAttr" value="{{setr.title_attr}}"><br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="commentRegex">Comment Regex</label><br>
+                        <input class="form-control" type="text" name="comment_regex" id="commentRegex" value="{{setr.comment_regex}}"><br>
+                    </div>
+                </div>
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="commentNum">Comment Num</label><br>
+                        <input class="form-control" type="text" name="comment_num" id="commentNum" value="{{setr.comment_num}}"><br>
+                    </div>
+                </div>
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="commentReverse">CommentReverse</label><br>
+                        <input class="form-control" type="text" name="comment_reverse" id="commentReverse" value="{{setr.comment_reverse}}"><br>
+                    </div>
+                </div>
+                <div class="row form-group-custom">
+                    <div class="col-md-12 form-group">
+                        <label for="commentAttr">Comment Attribute</label><br>
+                        <input class="form-control" type="text" name="comment_Attr" id="commentAttr" value="{{setr.comment_attr}}"><br>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
